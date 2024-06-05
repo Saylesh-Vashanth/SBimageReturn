@@ -22,7 +22,18 @@ public class UserEntity {
     @Column(name = "email")
     private String email;
     
-    public Long getId() {
+    @Column(name = "profileimage")
+    private String profileimage;
+    
+    public String getProfileimage() {
+		return profileimage;
+	}
+
+	public void setProfileimage(String profileimage) {
+		this.profileimage = profileimage;
+	}
+
+	public Long getId() {
 		return id;
 	}
 

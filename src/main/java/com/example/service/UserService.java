@@ -1,6 +1,5 @@
 package com.example.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +21,11 @@ public class UserService {
     public UserEntity findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
     public UserEntity getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    
     public String addUser(UserEntity user) {
         UserEntity existingUser = userRepository.findByUsername(user.getUsername());
         if (existingUser != null) {
@@ -41,13 +40,12 @@ public class UserService {
         if (existingUser == null) {
             return "User with username " + username + " does not exist";
         }
-       
+
         existingUser.setUsername(updatedUser.getUsername());
         existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setProfileimage(updatedUser.getProfileimage());
+
         userRepository.save(existingUser);
         return "User updated successfully";
     }
-
-
-   
 }
